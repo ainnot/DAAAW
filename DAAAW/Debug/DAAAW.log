@@ -1,0 +1,10 @@
+﻿  ForWindow.c
+C:\Users\stuff\source\repos\DAAAW\DAAAW\TrackInput.h(4,23): warning C4091: 'typedef ': 변수를 선언하지 않으면 'Tracks' 왼쪽은 무시됩니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(51,19): warning C4013: '_kbhit'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(52,23): warning C4013: '_getch'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(58,35): warning C4013: 'PrintNotSelect'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(62,42): warning C4013: 'PrintSelect'이(가) 정의되지 않았습니다. extern은 int형을 반환하는 것으로 간주합니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(171): warning C4716: 'PrintNotSelect': 값을 반환해야 합니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(223): warning C4715: 'SelectProcess': 모든 제어 경로에서 값을 반환하지는 않습니다.
+C:\Users\stuff\source\repos\DAAAW\DAAAW\ForWindow.c(148): warning C4715: 'PrintSelect': 모든 제어 경로에서 값을 반환하지는 않습니다.
+  DAAAW.vcxproj -> C:\Users\stuff\source\repos\DAAAW\Debug\DAAAW.exe
