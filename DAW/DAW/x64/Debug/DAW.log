@@ -1,0 +1,2 @@
+﻿  main.c
+C:\Users\sungtae\Downloads\main.c(3,10): fatal  error C1083: 포함 파일을 열 수 없습니다. 'TrackInput.h': No such file or directory
