@@ -173,6 +173,7 @@ int PrintNotSelect(int x, int y)
 
 int SelectProcess()
 {
+    static int first = 0;
     printf("\n");
 
     int ModSelect = 0;
@@ -180,7 +181,10 @@ int SelectProcess()
     // 저장 불러오기 만들기 재생하기 멈추기 종료하기
     // 저장하지 않고 불러오거나 새 파일을 생성할 시, 자동저장되지 않습니다.
     textcolor(SkyBlue);
-    printf("\n\n파일저장    불러오기    파일생성\n");//띄어쓰기는 항상 4칸
+    if (first++ == 0)
+        goto_xy(0, 25);
+    else goto_xy(0, 23);
+    printf("파일저장    불러오기    파일생성\n");//띄어쓰기는 항상 4칸
     printf("\n음악재생    음악멈춤    음악편집\n");//-> 음악재생 - 음악멈춤 은 성태꺼 가져와서 하고있음 
     printf("\n프로그램 종료\n\n");
     textcolor(DarkGray);
@@ -222,12 +226,12 @@ int SelectProcess()
 
 }
 
-
+//완료 
 int MusicCursor(char* music, int* Oc, int* HowLong)
 {
 
     int x = 0, y = 10;
-
+    printf("%c%c%c", music[0], music[1], music[2]);
 
     // 방향키 입력받기
     char c;
@@ -239,23 +243,62 @@ int MusicCursor(char* music, int* Oc, int* HowLong)
                 switch (c) {        //27부터가 저장임
                 case LEFT:
                     
-                    
-                    if (x - 1 > 0)
-                        x--;
+                    goto_xy(x, y);
+                    textcolor(WHITE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    if (x - 3 >= 0)
+                        x-=3;
 
                     goto_xy(x,y);
-                    printf("왼쪽");
+                    textcolor(BLUE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                   // printf("%c%c%c", music[x + (10 * (y - 10))] , music[x+1 + (10 * (y - 10))], music[x + 2 + (10 * (y - 10))]);
 
-
+                    //music[x+(10*(y-10))]접근
                     break;
+
+
+
                 case RIGHT:
-                    printf("오른");
+                    goto_xy(x, y);
+                    textcolor(WHITE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    if (x + 3 <30)
+                        x+=3;
+                    
+
+                    goto_xy(x, y);
+                    textcolor(BLUE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+
+                    // printf("%c%c%c", music[x + (10 * (y - 10))], music[x + 1 + (10 * (y - 10))], music[x + 2 + (10 * (y - 10))]);
+
                     break;
                 case UP:
-                    printf("위쪽");
+                    goto_xy(x, y);
+                    textcolor(WHITE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    if (y - 1 >= 10)
+                        y -= 1;
+
+                    goto_xy(x, y);
+                    textcolor(BLUE);
+
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    //printf("%c%c%c", music[x + (10 * (y - 10))], music[x + 1 + (10 * (y - 10))], music[x + 2 + (10 * (y - 10))]);
+
                     break;
                 case DOWN:
-                    printf("아래쪽");
+                    goto_xy(x, y); textcolor(WHITE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    if (y + 1 < 20)
+                        y += 1;
+
+                    goto_xy(x, y);
+                    textcolor(BLUE);
+                    printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
+                    //printf("%c%c%c", music[x + (10 * (y - 10))], music[x + 1 + (10 * (y - 10))], music[x + 2 + (10 * (y - 10))]);
+
                     break;
 
                 }
@@ -263,82 +306,76 @@ int MusicCursor(char* music, int* Oc, int* HowLong)
             }
             else 
             {
-                switch (c)
+               // switch (c)
+                
+                if (c == 48)
                 {
-                case 48:
-                    //종료
-                    return 0;
-                    break;
-                case 49:
-                    //도
-                    //music[*x + (*y - 14)] = "C";
-                    return 1;
-                    break;
-                case 50:
-                    //레
-                    //music[*x + (*y - 14)] = "D";
-                    return 2;
-                    break;
-                case 51:
-                    //미
-                    //music[*x + (*y - 14)] = "E";
-                    return 3;
-                    break;
-                case 52:
-                    //파
-                    //music[*x + (*y - 14)] = "F";
-                    return 4;
-                    break;
-                case 53:
-                    //솔
-                    //music[*x + (*y - 14)] = "G";
-                    return 5;
-                    break;
-                case 54:
-                    //라
-                    //music[*x + (*y - 14)] = "A";
-                    return 6;
-                    break;
-                case 55:
-                    //시
-                    //music[*x + (*y - 14)] = "B";
-                    return 7;
-                    break;
-                case 56:
-                    //옥타브 올리기
+                 break;
+                }
+                else  if (c == 49)
+                {     //도
+                    music[(y - 10) * 30 + x] = 67;
+
+                }
+                else  if (c == 50)
+                {   //레
+                    music[(y - 10) * 30 + x] = 68;
+                }
+                else  if (c == 51)
+                {   //미
+                    music[(y - 10) * 30 + x] = 69;
+
+                }
+                else  if (c == 52)
+                {    //파
+                    music[(y - 10) * 30 + x] = 70;
+                }
+                else  if (c == 53)
+                {    //솔
+                    music[(y - 10) * 30 + x] = 71;
+                }
+                else  if (c == 54)
+                {   //라
+                    music[(y - 10) * 30 + x] = 65;
+                }
+                else  if (c == 55)
+                {   //시
+                    music[(y - 10) * 30 + x] = 66;
+                }
+                else  if (c == 56)
+                {    //옥타브 올리기
                     if (*Oc == 0) *Oc = 1;
-                    else if (*Oc == 2) *Oc = 1;
-                    return 8;
-                    break;
-                case 57:
-                    //옥타브 내리기
+                    else if (*Oc == 2) *Oc = 0;
+                }
+                else  if (c == 57)
+                {    //옥타브 내리기
                     if (*Oc == 0) *Oc = 2;
-                    else if (*Oc == 1) *Oc = 2;
-                    return 9;
-                    break;
-                case 81:
-                    //음길이 길게
+                    else if (*Oc == 1) *Oc = 0;
+                }
+                else  if (c == 81|| c==113)
+                {    //음길이 길게
                     if (*HowLong != 4) *HowLong += 1;
                     else *HowLong = 1;
-                    break;
-                case 87:
+                }
+                else  if (c == 87||c== 119)
+                {
                     if (*HowLong != 1) *HowLong -= 1;
                     else *HowLong = 4;
                     //음길이 짧게
-                    break;
                 }
+                
 
+                if (*Oc == 0) music[(y - 10) * 30 + x + 2]= 61;//=
+               else if (*Oc == 1)  music[(y - 10) * 30 + x + 2] = 43;//+
+                else  music[(y - 10) * 30 + x + 2] = 45;//-
 
-                // if (*Oc == 0) music[*x + (*y - 12)] = '=';
-               // else if (*Oc == 1)  music[*x + (*y - 12)] = '+';
-               // else  music[*x + (*y - 12)] = '-';
+                if (*HowLong == 1) music[(y - 10) * 30 + x + 1] = 49;
+                else if (*HowLong == 2) music[(y - 10) * 30 + x + 1] = 50;
+                else if(*HowLong==3) music[(y - 10) * 30 + x + 1] = 51;
+               else music[(y - 10) * 30 + x + 1] = 52;
 
-                //if (*HowLong == 1) music[*x + (*y - 13)] = '1';
-               // else if (*HowLong == 2)  music[*x + (*y - 13)] = '2';
-               // else if(*HowLong==3) music[*x + (*y - 13)] = '3';
-               // else  music[*x + (*y - 13)] = '4';
-
-               // printf("%c%c%c", music[*x + (*y - 14)], music[*x + (*y - 13)], music[*x + (*y - 12)]);
+                goto_xy(x, y);
+                printf("%c%c%c", music[(y - 10) * 30 + x], music[(y - 10) * 30 + x + 1], music[(y - 10) * 30 + x + 2]);
 
             }
            

@@ -5,10 +5,5 @@
 
 int main()
 {
-	
-
-
-
-
 	InputHelp();
 }

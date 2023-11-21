@@ -14,6 +14,7 @@ void InputHelp();
 void textcolor(int colorNum);
 
 void MusicEdit(char* music);
+int ArrPoint(char* music);
 // 
 // 
 //외부파일출력
